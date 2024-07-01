@@ -11,13 +11,14 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 import static org.springframework.security.config.Customizer.withDefaults;
-
+/*Todo esto esta creado para realizar pruebas sin autentificacion, hay que borrar una vez tocada el tema de seguridad*/
 @Configuration
 @EnableWebSecurity
 public class SecurityConfigurations {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
