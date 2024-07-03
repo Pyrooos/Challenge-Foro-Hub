@@ -1,5 +1,8 @@
 package com.alura.forohub.infra.security;
 
+import com.alura.forohub.usuarios.Usuario;
+import com.alura.forohub.usuarios.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -7,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -16,26 +20,30 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfigurations {
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/topicos").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/topicos/**").authenticated()
+                        .anyRequest().permitAll()
                 )
-                .httpBasic(withDefaults()); // Aquí se usa withDefaults para la configuración predeterminada
+                .httpBasic(withDefaults());
         return http.build();
     }
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails user = User.builder()
-                .username("user")
-                .password("{noop}password") // {noop} es para indicar que no se usará un codificador de contraseñas
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(user);
+        return username -> {
+            Usuario usuario = usuarioRepository.findByUsername(username)
+                    .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + username));
+            return org.springframework.security.core.userdetails.User.withUsername(usuario.getUsername())
+                    .password(usuario.getPassword())
+                    .roles(usuario.getRole())
+                    .build();
+        };
     }
 }
