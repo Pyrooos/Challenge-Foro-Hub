@@ -4,6 +4,9 @@ import com.alura.forohub.usuarios.Usuario;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import com.auth0.jwt.interfaces.JWTVerifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +24,7 @@ public class TokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256(apiSecret);
             return JWT.create()
-                    .withIssuer("Challenge-Foro-Hub")
+                    .withIssuer("Challenge Foro Hub")
                     .withSubject(usuario.getLogin())
                     .withClaim( "id",usuario.getId())
                     .withExpiresAt(generarFechaExpiracion())
@@ -31,6 +34,29 @@ public class TokenService {
             throw new RuntimeException();
         }
     }
+    public String getSubject(String token){
+        if (token == null ){
+            throw new RuntimeException();
+        }
+         DecodedJWT verifier = null;
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(apiSecret);
+            verifier = JWT.require(algorithm)
+                    // specify any specific claim validations
+                    .withIssuer("Challenge Foro Hub")
+                    // reusable verifier instance
+                    .build()
+                    .verify(token);
+            verifier.getSubject();
+
+        } catch (JWTVerificationException exception){
+            // Invalid signature/claims
+            System.out.println(exception.toString());
+        }if (verifier.getSubject() == null){
+            throw new RuntimeException("verifier invalido");
+        }return verifier.getSubject();
+    }
+
     private Instant generarFechaExpiracion(){
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-06"));
     }

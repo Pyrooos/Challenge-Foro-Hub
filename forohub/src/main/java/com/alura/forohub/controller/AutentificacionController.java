@@ -22,10 +22,9 @@ public class AutentificacionController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
     @Autowired
     private TokenService tokenService;
-
-
 
     @PostMapping
     public ResponseEntity autentificarUsuario(@RequestBody @Valid DatosAutentificacionUsuario datosAutentificacionUsuario){
