@@ -1,22 +1,22 @@
-ForoHub
+#ForoHub
 
-Descripción del Proyecto
+##Descripción del Proyecto
 
-    ForoHub es una aplicación de foro en línea construida con Java, Spring Boot, y MySQL. Permite a los usuarios crear, leer, actualizar y eliminar tópicos (hilos de discusión) en diferentes categorías.
+ForoHub es una aplicación de foro en línea construida con Java, Spring Boot, y MySQL. Permite a los usuarios crear, leer, actualizar y eliminar tópicos (hilos de discusión) en diferentes categorías.
 
-Características
+##Características
 
-    Autenticación y Autorización: Los usuarios deben autenticarse para acceder a las funcionalidades de la API.
-    CRUD de Tópicos: Los usuarios pueden crear, leer, actualizar y eliminar tópicos.
-    Validación de Datos: Uso de anotaciones de validación para asegurar la integridad de los datos.
-    JWT: Implementación de tokens JWT para la autenticación de usuarios.
-    Requisitos del Sistema
+Autenticación y Autorización: Los usuarios deben autenticarse para acceder a las funcionalidades de la API.
+CRUD de Tópicos: Los usuarios pueden crear, leer, actualizar y eliminar tópicos.
+Validación de Datos: Uso de anotaciones de validación para asegurar la integridad de los datos.
+JWT: Implementación de tokens JWT para la autenticación de usuarios.
+Requisitos del Sistema
 
-    Java 17 o superior
-    Maven 3.8 o superior
-    MySQL 8.0 o superior
+Java 17 o superior
+Maven 3.8 o superior
+MySQL 8.0 o superior
 
-Instalación
+##Instalación
 
     1. Clona el repositorio:
         Git clone git@github.com:Pyrooos/Challenge-Foro-Hub.git
@@ -30,11 +30,11 @@ Instalación
         api.security.secret=tu_contraseña
 
 
-Uso
+##Uso
 Para interactuar con la API, utiliza una herramienta como Postman o Insomnia.
 
 
-Autenticación
+###Autenticación
 
     Registro en usarios via SQL
 
@@ -49,9 +49,9 @@ Autenticación
             "clave": "contraseña"
         }
 
-Endpoints de la API
+##Endpoints de la API
 
-    Crear Tópico
+    ###Crear Tópico
 
     POST /topicos
 
@@ -65,15 +65,15 @@ Endpoints de la API
             "anio": 2024
         }
 
-Obtener Todos los Tópicos
+##Obtener Todos los Tópicos
 
     GET /topicos
 
-Obtener un Tópico en especifico
+##Obtener un Tópico en especifico
     
     GET /topicos{id}
 
-Actualizar Tópico
+##Actualizar Tópico
 
     PUT /topicos/{id}
 
@@ -87,17 +87,17 @@ Actualizar Tópico
             "anio": 2024
         }
 
-Eliminar Tópico
+##Eliminar Tópico
 
     DELETE /topicos/{id}
 
-Seguridad
+##Seguridad
 
     ForoHub utiliza JWT para la autenticación de usuarios. Los usuarios deben incluir el token JWT en el encabezado Authorization de cada solicitud que requiere autenticación. 
     Este aparece en en herramienta que estes usando (Insomnia o Postman) despues de hacer login correctamente y debe introducirse en la peticion que estes solicitando.
 
 
-Contribuir
+##Contribuir
 
     Las contribuciones son bienvenidas. Para contribuir, sigue estos pasos:
 
@@ -107,7 +107,7 @@ Contribuir
     Haz push a la rama (git push origin feature/nueva-funcionalidad).
     Abre un Pull Request.
 
-Contacto
+###Contacto
 
     Cristian Gutierrez - @Pyrooos - Cristianguher@Outlook.com
 
