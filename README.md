@@ -1,10 +1,10 @@
-#ForoHub
+# ForoHub
 
-##Descripción del Proyecto
+## Descripción del Proyecto
 
 ForoHub es una aplicación de foro en línea construida con Java, Spring Boot, y MySQL. Permite a los usuarios crear, leer, actualizar y eliminar tópicos (hilos de discusión) en diferentes categorías.
 
-##Características
+## Características
 
 Autenticación y Autorización: Los usuarios deben autenticarse para acceder a las funcionalidades de la API.
 CRUD de Tópicos: Los usuarios pueden crear, leer, actualizar y eliminar tópicos.
@@ -16,31 +16,32 @@ Java 17 o superior
 Maven 3.8 o superior
 MySQL 8.0 o superior
 
-##Instalación
+## Instalación
 
-    1. Clona el repositorio:
-        Git clone git@github.com:Pyrooos/Challenge-Foro-Hub.git
-
-
-    2. Configura la base de datos en application.properties:
-
-        spring.datasource.url=jdbc:mysql://localhost:3306/nombre_de_tu_base_de_datos
-        spring.datasource.username=tu_usuario
-        spring.datasource.password=tu_contraseña
-        api.security.secret=tu_contraseña
+1. Clona el repositorio:
+    Git clone git@github.com:Pyrooos/Challenge-Foro-Hub.git
 
 
-##Uso
+2. Configura la base de datos en application.properties:
+
+    spring.datasource.url=jdbc:mysql://localhost:3306/nombre_de_tu_base_de_datos
+    spring.datasource.username=tu_usuario
+    spring.datasource.password=tu_contraseña
+    api.security.secret=tu_contraseña
+
+
+## Uso
+
 Para interactuar con la API, utiliza una herramienta como Postman o Insomnia.
 
 
-###Autenticación
+## Autenticación
 
-    Registro en usarios via SQL
+  ###  Registro en usarios via SQL
 
-        USE tu_base_de_datos;
-        INSERT INTO usuarios (nombre_usuario, clave) VALUES ('usuario',  'contraseña_hasheada');
-
+    USE tu_base_de_datos;
+    INSERT INTO usuarios (nombre_usuario, clave) VALUES ('usuario',  'contraseña_hasheada');
+### Login
     POST /login
 
         json
@@ -49,9 +50,9 @@ Para interactuar con la API, utiliza una herramienta como Postman o Insomnia.
             "clave": "contraseña"
         }
 
-##Endpoints de la API
+## Endpoints de la API
 
-    ###Crear Tópico
+### Crear Tópico
 
     POST /topicos
 
@@ -65,15 +66,15 @@ Para interactuar con la API, utiliza una herramienta como Postman o Insomnia.
             "anio": 2024
         }
 
-##Obtener Todos los Tópicos
+### Obtener Todos los Tópicos
 
     GET /topicos
 
-##Obtener un Tópico en especifico
+### Obtener un Tópico en especifico
     
     GET /topicos{id}
 
-##Actualizar Tópico
+### Actualizar Tópico
 
     PUT /topicos/{id}
 
@@ -87,27 +88,27 @@ Para interactuar con la API, utiliza una herramienta como Postman o Insomnia.
             "anio": 2024
         }
 
-##Eliminar Tópico
+### Eliminar Tópico
 
     DELETE /topicos/{id}
 
-##Seguridad
+## Seguridad
 
-    ForoHub utiliza JWT para la autenticación de usuarios. Los usuarios deben incluir el token JWT en el encabezado Authorization de cada solicitud que requiere autenticación. 
-    Este aparece en en herramienta que estes usando (Insomnia o Postman) despues de hacer login correctamente y debe introducirse en la peticion que estes solicitando.
+ForoHub utiliza JWT para la autenticación de usuarios. Los usuarios deben incluir el token JWT en el encabezado Authorization de cada solicitud que requiere autenticación. 
+Este aparece en en herramienta que estes usando (Insomnia o Postman) despues de hacer login correctamente y debe introducirse en la peticion que estes solicitando.
 
 
-##Contribuir
+## Contribuir
 
-    Las contribuciones son bienvenidas. Para contribuir, sigue estos pasos:
+Las contribuciones son bienvenidas. Para contribuir, sigue estos pasos:
 
-    Haz un fork del repositorio.
-    Crea una nueva rama (git checkout -b feature/nueva-funcionalidad).
-    Haz commit de tus cambios (git commit -m 'Agregar nueva funcionalidad').
-    Haz push a la rama (git push origin feature/nueva-funcionalidad).
-    Abre un Pull Request.
+Haz un fork del repositorio.
+Crea una nueva rama (git checkout -b feature/nueva-funcionalidad).
+Haz commit de tus cambios (git commit -m 'Agregar nueva funcionalidad').
+Haz push a la rama (git push origin feature/nueva-funcionalidad).
+Abre un Pull Request.
 
-###Contacto
+### Contacto
 
     Cristian Gutierrez - @Pyrooos - Cristianguher@Outlook.com
 
