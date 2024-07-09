@@ -16,6 +16,9 @@ Java 17 o superior
 Maven 3.8 o superior
 MySQL 8.0 o superior
 
+## Diagrama
+![Diagrama de Base de Datos](images/diagrama.png)
+
 ## Instalación
 
 1. Clona el repositorio:
