@@ -17,7 +17,7 @@ Maven 3.8 o superior
 MySQL 8.0 o superior
 
 ## Diagrama
-![Diagrama de Base de Datos](images/diagrama.png)
+![Diagrama de Base de Datos](images/Diagrama.png)
 
 ## Instalación
 
