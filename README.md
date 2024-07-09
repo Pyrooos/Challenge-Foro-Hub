@@ -2,6 +2,7 @@
 <p align="center">
   <img src="/Images/Badge-Spring.png" alt="badge">
 </p>
+
 ## Descripción del Proyecto
 
 ForoHub es una aplicación de foro en línea construida con Java, Spring Boot, y MySQL. Permite a los usuarios crear, leer, actualizar y eliminar tópicos (hilos de discusión) en diferentes categorías.
@@ -18,7 +19,7 @@ Java 17 o superior
 Maven 3.8 o superior
 MySQL 8.0 o superior
 
-## Diagrama
+## Diagrama ER
 ![Diagrama de Base de Datos](/Images/Diagrama.png)
 
 ## Instalación
